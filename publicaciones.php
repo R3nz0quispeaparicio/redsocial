@@ -203,7 +203,7 @@ try {
 
     // Enlace para la siguiente página si es necesario
     if ($IncrimentNum > 0) {
-        echo "<a href='#' class='btn btn-primary load-more' data-page='".$IncrimentNum."'>Siguiente</a>";
+        echo "<a href='https://app-c32fa0d2-8e26-4be6-8c30-fabe657b1315.cleverapps.io/miactividad.php' class='btn btn-primary load-more' data-page='".$IncrimentNum."'>Siguiente</a>";
     }
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
