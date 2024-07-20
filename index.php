@@ -38,8 +38,11 @@ if (isset($_POST['publicar'])) {
     $code = $next_increment . $alea;
 
     // Procesar imagen subida
+    $type='';
+    
     $nombre_imagen = "publicaciones/" . $code . '.' . $type;
     if (!empty($_FILES['foto']['tmp_name'])) {
+        
         $rfoto = $_FILES['foto']['tmp_name'];
         $type = pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION);
         $nombre_imagen = $code . '.' . $type;
