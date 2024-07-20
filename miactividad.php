@@ -130,7 +130,7 @@ foreach ($consulta as $lista) {
 }
 
 if ($IncrimentNum > 0) {
-  echo "<a href=\"miactividad.php?id=$aid&pag=$IncrimentNum\">Siguiente</a>";
+  echo "<a href=\"https://app-c32fa0d2-8e26-4be6-8c30-fabe657b1315.cleverapps.io/miactividad.php?id=$aid&pag=$IncrimentNum\">Siguiente</a>";
 }
 ?>
 <script>
