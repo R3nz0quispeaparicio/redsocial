@@ -104,7 +104,7 @@ if ($stmt_like->rowCount() > 0) {
                             <p><?php echo $publicacion['contenido'];?></p>
                             <?php
                                 if (!empty($publicacion['imagen'])) {
-                                    echo "<img src='https://app-c32fa0d2-8e26-4be6-8c30-fabe657b1315.cleverapps.io/publicaciones/" . htmlspecialchars($publicacion['imagen']) . "' class='img-responsive pad' alt='Imagen de la publicación'>";
+                                    echo "<img src='publicaciones/" . htmlspecialchars($publicacion['imagen']) . "' class='img-responsive pad' alt='Imagen de la publicación'>";
                                 }
                             ?>
                             <button type="button" class="btn btn-default btn-xs"><i class="fa fa-share"></i> Compartir</button>
@@ -178,7 +178,7 @@ $(document).ready(function() {
         var $likeCount = $('#likes_' + id);
         
         $.ajax({
-            url: 'https://app-c32fa0d2-8e26-4be6-8c30-fabe657b1315.cleverapps.io/megusta.php',
+            url: 'megusta.php',
             type: 'POST',
             data: {id: id},
             dataType: 'json',
@@ -211,7 +211,7 @@ $(document).ready(function() {
             var usuario = <?php echo $_SESSION['id']; ?>;
             
             $.ajax({
-                url: 'https://app-c32fa0d2-8e26-4be6-8c30-fabe657b1315.cleverapps.io/agregarcomentario.php',
+                url: 'agregarcomentario.php',
                 type: 'POST',
                 data: {
                     comentario: comentario,
@@ -221,7 +221,7 @@ $(document).ready(function() {
                 success: function(response) {
                     // Agregar el nuevo comentario al DOM
                     var nuevoComentario = '<div class="box-comment">' +
-                        '<img class="img-circle img-sm" src="https://app-c32fa0d2-8e26-4be6-8c30-fabe657b1315.cleverapps.io/avatars/<?php echo $_SESSION['avatar']; ?>" alt="User Image">' +
+                        '<img class="img-circle img-sm" src="avatars/<?php echo $_SESSION['avatar']; ?>" alt="User Image">' +
                         '<div class="comment-text">' +
                         '<span class="username">' +
                         '<?php echo $_SESSION['usuario']; ?>' +
