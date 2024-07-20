@@ -10,10 +10,10 @@ const io = require('socket.io')(http, {
 const mysql = require('mysql2/promise');
 // Configuración de la base de datos
 const dbConfig = {
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'redsocial'
+  host: 'bo748bvup13ccw72g9tv-mysql.services.clever-cloud.com',
+  user: 'ubtwztmem0uyldhg',
+  password: 'ubtwztmem0uyldhg',
+  database: 'bo748bvup13ccw72g9tv'
 };
 
 let messageCache = new Set();
