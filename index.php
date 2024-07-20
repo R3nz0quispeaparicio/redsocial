@@ -134,7 +134,7 @@ if (isset($_POST['publicar'])) {
                         </div>
                     </div>
                     <div class="scroll">
-                        <?php require_once 'publicaciones.php'; ?>
+                        <?php require_once 'https://app-c32fa0d2-8e26-4be6-8c30-fabe657b1315.cleverapps.io/publicaciones.php'; ?>
                     </div>
                     <script>
                         $(document).ready(function() {
@@ -167,9 +167,9 @@ if (isset($_POST['publicar'])) {
                                     </div>
                                     <div class="product-info">
                                         <?php echo $us['usuario']; ?>
-                                        <a href="solicitud.php?action=aceptar&id=<?php echo $am['id_ami']; ?>"><span class="label label-success pull-right">Aceptar</span></a>
+                                        <a href="https://app-c32fa0d2-8e26-4be6-8c30-fabe657b1315.cleverapps.io/solicitud.php?action=aceptar&id=<?php echo $am['id_ami']; ?>"><span class="label label-success pull-right">Aceptar</span></a>
                                         <br>
-                                        <a href="solicitud.php?action=rechazar&id=<?php echo $am['id_ami']; ?>"><span class="label label-danger pull-right">Rechazar</span></a>
+                                        <a href="https://app-c32fa0d2-8e26-4be6-8c30-fabe657b1315.cleverapps.io/solicitud.php?action=rechazar&id=<?php echo $am['id_ami']; ?>"><span class="label label-danger pull-right">Rechazar</span></a>
                                         <span class="product-description">
                                             <?php echo $us['sexo']; ?>
                                         </span>
@@ -179,7 +179,7 @@ if (isset($_POST['publicar'])) {
                             </ul>
                         </div>
                         <div class="box-footer text-center">
-                            <a href="solicitudes.php" class="uppercase">Ver todas las solicitudes</a>
+                            <a href="https://app-c32fa0d2-8e26-4be6-8c30-fabe657b1315.cleverapps.io/solicitudes.php" class="uppercase">Ver todas las solicitudes</a>
                         </div>
                     </div>
                     <div class="box box-primary">
