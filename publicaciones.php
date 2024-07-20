@@ -153,7 +153,9 @@ try {
                 <span id="likes_<?php echo $lista['id_pub']; ?>"> (<?php echo $lista['likes']; ?>)</span>
             </li>
             <li class="pull-right">
-                <span class="link-black text-sm toggle-comments" data-pub-id="<?php echo $lista['id_pub']; ?>"><i class="fa fa-comments-o margin-r-5"></i> Comentarios (<?php echo $numcomen; ?>)</span>
+                <span class="link-black text-sm toggle-comments" data-pub-id="<?php echo $lista['id_pub']; ?>">
+                    <i class="fa fa-comments-o margin-r-5"></i> Comentarios (<?php echo $numcomen; ?>)
+                </span>
             </li>
         </ul>
     </div>
