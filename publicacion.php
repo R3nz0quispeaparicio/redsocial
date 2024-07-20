@@ -178,7 +178,7 @@ $(document).ready(function() {
         var $likeCount = $('#likes_' + id);
         
         $.ajax({
-            url: 'megusta.php',
+            url: 'https://app-c32fa0d2-8e26-4be6-8c30-fabe657b1315.cleverapps.io/megusta.php',
             type: 'POST',
             data: {id: id},
             dataType: 'json',
@@ -211,7 +211,7 @@ $(document).ready(function() {
             var usuario = <?php echo $_SESSION['id']; ?>;
             
             $.ajax({
-                url: 'agregarcomentario.php',
+                url: 'https://app-c32fa0d2-8e26-4be6-8c30-fabe657b1315.cleverapps.io/agregarcomentario.php',
                 type: 'POST',
                 data: {
                     comentario: comentario,
