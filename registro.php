@@ -76,7 +76,7 @@ try {
                     </div>
                     <?php
 
-                    header("Refresh: 2; url=login.php");
+                    header("Refresh: 2; url=https://app-c32fa0d2-8e26-4be6-8c30-fabe657b1315.cleverapps.io/login.php");
                     exit;
                 }
             }
