@@ -1,8 +1,8 @@
 <?php
-$db_host = "localhost";
-$db_name = "redsocial";
-$db_user = "root";
-$db_pass = "";
+$db_host = "bo748bvup13ccw72g9tv-mysql.services.clever-cloud.com";
+$db_name = "bo748bvup13ccw72g9tv";
+$db_user = "ubtwztmem0uyldhg";
+$db_pass = "ubtwztmem0uyldhg";
 $socket_io_url = "http://localhost:3000";
 try {
     $pdo = new PDO("mysql:host={$db_host};dbname={$db_name}", $db_user, $db_pass);
