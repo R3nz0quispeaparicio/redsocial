@@ -11,7 +11,8 @@ try {
     $pdo = new PDO("mysql:host={$db_host};dbname={$db_name}", $db_user, $db_pass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
-    die('Error de conexión: ' . $e->getMessage());
+    error_log('Error de conexión: ' . $e->getMessage());
+    die(json_encode(['success' => false, 'error' => 'Error de conexión a la base de datos']));
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
