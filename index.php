@@ -49,10 +49,12 @@ if (!empty($_FILES['foto']['tmp_name'])) {
 }
 
     // Insertar publicación
-    $stmt = $pdo->prepare("INSERT INTO publicaciones (usuario, fecha, contenido, imagen) VALUES (:usuario, NOW(), :contenido, :imagen)");
+    $stmt = $pdo->prepare("INSERT INTO publicaciones (usuario, fecha, contenido, imagen, album) VALUES (:usuario, NOW(), :contenido, :imagen, :album)");
     $stmt->bindParam(':usuario', $_SESSION['id'], PDO::PARAM_INT);
     $stmt->bindParam(':contenido', $publicacion, PDO::PARAM_STR);
     $stmt->bindParam(':imagen', $nombre_imagen, PDO::PARAM_STR);
+    $stmt->bindParam(':album', $album, PDO::PARAM_STR); 
+    $album = '';  // Asigna un valor por defecto si no se usa
     $stmt->execute();
     try {
     $stmt->execute();
