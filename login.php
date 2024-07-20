@@ -80,7 +80,7 @@ if (isset($_POST['login'])) {
     </form>
     <br>
     <a href="#">Olvidé mi contraseña</a><br>
-    <a href="registro.php" class="text-center">Registrarme en REDSOCIAL</a>
+    <a href="https://app-c32fa0d2-8e26-4be6-8c30-fabe657b1315.cleverapps.io/registro.php" class="text-center">Registrarme en REDSOCIAL</a>
   </div>
 </div>
 <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
