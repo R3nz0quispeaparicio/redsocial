@@ -120,7 +120,7 @@ $chats = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <script src="plugins/fastclick/fastclick.js"></script>
 <script src="dist/js/app.min.js"></script>
 <script>
-    const socket = io("https://app-c32fa0d2-8e26-4be6-8c30-fabe657b1315.cleverapps.io/");
+    const socket = io("https://app-c32fa0d2-8e26-4be6-8c30-fabe657b1315.cleverapps.io");
     
     const chatForm = document.getElementById("chat-form");
     const chatInput = document.getElementById("chat-input");
