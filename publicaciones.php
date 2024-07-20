@@ -122,7 +122,7 @@ try {
     <div class="box-header with-border">
         <div class="user-block">
             <img class="img-circle" src="http://localhost/redsocial-master/redsocial-master/avatars/<?php echo $use['avatar']; ?>" alt="User Image">
-            <span class="description" onclick="location.href='http://localhost/redsocial-master/redsocial-master/perfil.php?id=<?php echo $use['id_use'];?>';"><?php echo $use['usuario'];?></span>
+            <span class="description" onclick="location.href='https://app-c32fa0d2-8e26-4be6-8c30-fabe657b1315.cleverapps.io/perfil.php?id=<?php echo $use['id_use'];?>';"><?php echo $use['usuario'];?></span>
             <span class="description"><?php echo $lista['fecha'];?></span>
         </div>
         <div class="box-tools">
