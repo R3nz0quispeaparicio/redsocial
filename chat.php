@@ -120,11 +120,17 @@ $chats = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <script src="plugins/fastclick/fastclick.js"></script>
 <script src="dist/js/app.min.js"></script>
 <script>
-    const socket = io("https://app-c32fa0d2-8e26-4be6-8c30-fabe657b1315.cleverapps.io");
+    const socket = io("https://app-c32fa0d2-8e26-4be6-8c30-fabe657b1315.cleverapps.io", {
+        withCredentials: true,
+        extraHeaders: {
+            "my-custom-header": "abcd"
+        }
+    });
     
     const chatForm = document.getElementById("chat-form");
     const chatInput = document.getElementById("chat-input");
-    const chatMessages = document.getElementById("chat-messages");
+    var chatMessages = document.getElementById('chat-messages');
+    chatMessages.scrollTop = chatMessages.scrollHeight;
     let messageQueue = [];
 
     socket.on('connect', () => {
@@ -146,11 +152,14 @@ $chats = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 receiverId: <?php echo $usuario_id; ?>,
                 timestamp: Date.now()
             };
-            console.log('Enviando mensaje:', message);// Mostrar el mensaje localmente inmediatamente
+            console.log('Enviando mensaje:', message);
             appendMessage(message);
             
             socket.emit("chat message", message);
             chatInput.value = "";
+            
+            // Hacer scroll al final después de enviar un mensaje
+            chatMessages.scrollTop = chatMessages.scrollHeight;
         }
     });
 
