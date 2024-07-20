@@ -209,7 +209,7 @@ if (isset($_POST['publicar'])) {
     </div>
     <?php echo ControlSidebar(); ?>
 </div>
-<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="jQuery/jquery-2.2.3.min.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <script src="dist/js/app.min.js"></script>
 <script src="js/custom-file-input.js"></script>
