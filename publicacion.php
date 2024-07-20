@@ -95,7 +95,7 @@ if ($stmt_like->rowCount() > 0) {
                     <div class="box box-widget">
                         <div class="box-header with-border">
                             <div class="user-block">
-                                <img class="img-circle" src="http://localhost/redsocial-master/redsocial-master/avatars/<?php echo $use['avatar']; ?>" alt="User Image">
+                                <img class="img-circle" src="https://app-c32fa0d2-8e26-4be6-8c30-fabe657b1315.cleverapps.io/avatars/<?php echo $use['avatar']; ?>" alt="User Image">
                                 <span class="username"><a href="#"><?php echo $use['usuario'];?></a></span>
                                 <span class="description"><?php echo $publicacion['fecha'];?></span>
                             </div>
@@ -104,7 +104,7 @@ if ($stmt_like->rowCount() > 0) {
                             <p><?php echo $publicacion['contenido'];?></p>
                             <?php
                                 if (!empty($publicacion['imagen'])) {
-                                    echo "<img src='http://localhost/redsocial-master/redsocial-master/publicaciones/" . htmlspecialchars($publicacion['imagen']) . "' class='img-responsive pad' alt='Imagen de la publicación'>";
+                                    echo "<img src='https://app-c32fa0d2-8e26-4be6-8c30-fabe657b1315.cleverapps.io/publicaciones/" . htmlspecialchars($publicacion['imagen']) . "' class='img-responsive pad' alt='Imagen de la publicación'>";
                                 }
                             ?>
                             <button type="button" class="btn btn-default btn-xs"><i class="fa fa-share"></i> Compartir</button>
@@ -132,7 +132,7 @@ if ($stmt_like->rowCount() > 0) {
                                 $usec = $stmt_usuarioc->fetch(PDO::FETCH_ASSOC);
                                 ?>
                                 <div class="box-comment">
-                                    <img class="img-circle img-sm" src="http://localhost/redsocial-master/redsocial-master/avatars/<?php echo $usec['avatar'];?>" alt="User Image">
+                                    <img class="img-circle img-sm" src="https://app-c32fa0d2-8e26-4be6-8c30-fabe657b1315.cleverapps.io/avatars/<?php echo $usec['avatar'];?>" alt="User Image">
                                     <div class="comment-text">
                                         <span class="username">
                                             <?php echo $usec['usuario'];?>
@@ -148,7 +148,7 @@ if ($stmt_like->rowCount() > 0) {
                         </div>
                         <div class="box-footer">
                             <form action="#" method="post">
-                                <img class="img-responsive img-circle img-sm" src="http://localhost/redsocial-master/redsocial-master/avatars/<?php echo $_SESSION['avatar']; ?>" alt="Alt Text">
+                                <img class="img-responsive img-circle img-sm" src="https://app-c32fa0d2-8e26-4be6-8c30-fabe657b1315.cleverapps.io/avatars/<?php echo $_SESSION['avatar']; ?>" alt="Alt Text">
                                 <div class="img-push">
                                     <input type="text" class="form-control input-sm" placeholder="Presiona enter para publicar comentario">
                                 </div>
@@ -221,7 +221,7 @@ $(document).ready(function() {
                 success: function(response) {
                     // Agregar el nuevo comentario al DOM
                     var nuevoComentario = '<div class="box-comment">' +
-                        '<img class="img-circle img-sm" src="http://localhost/redsocial-master/redsocial-master/avatars/<?php echo $_SESSION['avatar']; ?>" alt="User Image">' +
+                        '<img class="img-circle img-sm" src="https://app-c32fa0d2-8e26-4be6-8c30-fabe657b1315.cleverapps.io/avatars/<?php echo $_SESSION['avatar']; ?>" alt="User Image">' +
                         '<div class="comment-text">' +
                         '<span class="username">' +
                         '<?php echo $_SESSION['usuario']; ?>' +
