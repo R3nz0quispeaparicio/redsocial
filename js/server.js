@@ -8,7 +8,7 @@ const io = require('socket.io')(http, {
   }
 });
 const mysql = require('mysql2/promise');
-// Configuración de la base de datos
+
 const dbConfig = {
   host: 'bo748bvup13ccw72g9tv-mysql.services.clever-cloud.com',
   user: 'ubtwztmem0uyldhg',
@@ -31,7 +31,6 @@ io.on('connection', (socket) => {
     console.log('Mensaje recibido en el servidor:', msg);
     const roomName = [msg.userId, msg.receiverId].sort().join('-');
     
-    // Verificar si el mensaje ya está en el caché
     const messageKey = `${msg.userId}-${msg.timestamp}`;
     if (messageCache.has(messageKey)) {
       console.log('Mensaje duplicado detectado, ignorando');
@@ -49,16 +48,14 @@ io.on('connection', (socket) => {
       console.log('Mensaje guardado en la base de datos');
       connection.end();
 
-      // Emitir el mensaje después de guardarlo exitosamente
       io.to(roomName).emit('chat message', msg);
     } catch (error) {
       console.error('Error al guardar el mensaje en la base de datos:', error);
     }
     
-    // Limpiar el caché después de un tiempo
     setTimeout(() => {
       messageCache.delete(messageKey);
-    }, 60000); // Limpiar después de 1 minuto
+    }, 60000);
   });
 
   socket.on('disconnect', () => {
@@ -66,7 +63,7 @@ io.on('connection', (socket) => {
   });
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 http.listen(PORT, '0.0.0.0', () => {
   console.log(`Servidor escuchando en el puerto ${PORT}`);
 });
