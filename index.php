@@ -29,7 +29,6 @@ function validarCaracteres($str) {
 if (isset($_POST['publicar'])) {
     $publicacion = $_POST['publicacion'];
 
-    
     // Obtener el siguiente ID de la tabla 'publicaciones'
     $stmt = $pdo->query("SHOW TABLE STATUS WHERE `Name` = 'publicaciones'");
     $next_increment = $stmt->fetch(PDO::FETCH_ASSOC)['Auto_increment'];
@@ -41,20 +40,20 @@ if (isset($_POST['publicar'])) {
     $type='';
     
     $nombre_imagen = "";
-if (!empty($_FILES['foto']['tmp_name'])) {
-    $type = pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION);
-    $nombre_imagen = $code . '.' . $type;
-    $destino = $_SERVER['DOCUMENT_ROOT'] . '/publicaciones/' . $nombre_imagen;
-    move_uploaded_file($_FILES['foto']['tmp_name'], $destino);
-}
+    if (!empty($_FILES['foto']['tmp_name'])) {
+        $type = pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION);
+        $nombre_imagen = $code . '.' . $type;
+        $destino = $_SERVER['DOCUMENT_ROOT'] . '/publicaciones/' . $nombre_imagen;
+        move_uploaded_file($_FILES['foto']['tmp_name'], $destino);
+    }
 
     // Insertar publicación
+    $album = ''; 
     $stmt = $pdo->prepare("INSERT INTO publicaciones (usuario, fecha, contenido, imagen, album) VALUES (:usuario, NOW(), :contenido, :imagen, :album)");
     $stmt->bindParam(':usuario', $_SESSION['id'], PDO::PARAM_INT);
     $stmt->bindParam(':contenido', $publicacion, PDO::PARAM_STR);
     $stmt->bindParam(':imagen', $nombre_imagen, PDO::PARAM_STR);
-    $stmt->bindParam(':album', $album, PDO::PARAM_STR); 
-    $album = '';  // Asigna un valor por defecto si no se usa
+    $stmt->bindParam(':album', $album, PDO::PARAM_STR);
     $stmt->execute();
     try {
     $stmt->execute();
