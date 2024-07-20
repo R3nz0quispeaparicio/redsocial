@@ -238,7 +238,7 @@ $(document).ready(function() {
                 success: function(response) {
                     // Agregar el nuevo comentario al DOM
                     var nuevoComentario = '<div class="box-comment">' +
-                        '<img class="img-circle img-sm" src="avatars/' + avatar + '">' +
+                        '<img class="img-circle img-sm" src="https://app-c32fa0d2-8e26-4be6-8c30-fabe657b1315.cleverapps.io/avatars/' + avatar + '">' +
                         '<div class="comment-text">' +
                         '<span class="username">' + nombre +
                         '<span class="text-muted pull-right">' + ' ' + 'Ahora' + '</span>' +
