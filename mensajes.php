@@ -51,7 +51,7 @@ $chats = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <section class="content">
             <div class="row">
                 <div class="col-md-3">
-                    <a href="nuevochat.php" class="btn btn-primary btn-block margin-bottom">Nuevo Mensaje</a>
+                    <a href="https://app-c32fa0d2-8e26-4be6-8c30-fabe657b1315.cleverapps.io/nuevochat.php" class="btn btn-primary btn-block margin-bottom">Nuevo Mensaje</a>
 
                     <div class="box box-solid">
                         <div class="box-header with-border">
@@ -80,7 +80,7 @@ $chats = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                         ?>
                                         <tr>
                                             <td class="mailbox-name">
-                                                <a href="chat.php?usuario=<?php echo $other_user_id; ?>">
+                                                <a href="https://app-c32fa0d2-8e26-4be6-8c30-fabe657b1315.cleverapps.io/chat.php?usuario=<?php echo $other_user_id; ?>">
                                                     <?php echo htmlspecialchars($chat['usuario']); ?>
                                                 </a>
                                             </td>
