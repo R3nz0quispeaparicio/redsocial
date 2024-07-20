@@ -121,7 +121,7 @@ try {
 <div class="box box-widget">
     <div class="box-header with-border">
         <div class="user-block">
-            <img class="img-circle" src="http://localhost/redsocial-master/redsocial-master/avatars/<?php echo $use['avatar']; ?>" alt="User Image">
+            <img class="img-circle" src="https://app-c32fa0d2-8e26-4be6-8c30-fabe657b1315.cleverapps.io/avatars/<?php echo $use['avatar']; ?>" alt="User Image">
             <span class="description" onclick="location.href='https://app-c32fa0d2-8e26-4be6-8c30-fabe657b1315.cleverapps.io/perfil.php?id=<?php echo $use['id_use'];?>';"><?php echo $use['usuario'];?></span>
             <span class="description"><?php echo $lista['fecha'];?></span>
         </div>
@@ -173,7 +173,7 @@ try {
             $usec = $stmt_usuarioc->fetch(PDO::FETCH_ASSOC);
             ?>
             <div class="box-comment">
-                <img class="img-circle img-sm" src="http://localhost/redsocial-master/redsocial-master/avatars/<?php echo $usec['avatar'];?>">
+                <img class="img-circle img-sm" src="https://app-c32fa0d2-8e26-4be6-8c30-fabe657b1315.cleverapps.io/avatars/<?php echo $usec['avatar'];?>">
                 <div class="comment-text">
                     <span class="username">
                         <?php echo $usec['usuario'];?>
