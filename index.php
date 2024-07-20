@@ -40,16 +40,13 @@ if (isset($_POST['publicar'])) {
     // Procesar imagen subida
     $type='';
     
-    $nombre_imagen = "publicaciones/" . $code . '.' . $type;
-    if (!empty($_FILES['foto']['tmp_name'])) {
-        
-        $rfoto = $_FILES['foto']['tmp_name'];
-        $type = pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION);
-        $nombre_imagen = $code . '.' . $type;
-        $destino = $_SERVER['DOCUMENT_ROOT'] . '/' . $nombre_imagen;
-        move_uploaded_file($rfoto, $destino);
-        $nombre_imagen = $destino; // Guardamos la ruta completa
-    }
+    $nombre_imagen = "";
+if (!empty($_FILES['foto']['tmp_name'])) {
+    $type = pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION);
+    $nombre_imagen = $code . '.' . $type;
+    $destino = $_SERVER['DOCUMENT_ROOT'] . '/publicaciones/' . $nombre_imagen;
+    move_uploaded_file($_FILES['foto']['tmp_name'], $destino);
+}
 
     // Insertar publicación
     $stmt = $pdo->prepare("INSERT INTO publicaciones (usuario, fecha, contenido, imagen) VALUES (:usuario, NOW(), :contenido, :imagen)");
@@ -57,6 +54,13 @@ if (isset($_POST['publicar'])) {
     $stmt->bindParam(':contenido', $publicacion, PDO::PARAM_STR);
     $stmt->bindParam(':imagen', $nombre_imagen, PDO::PARAM_STR);
     $stmt->execute();
+    try {
+    $stmt->execute();
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+        // Puedes agregar más detalles del error aquí
+        die();
+    }
 
     // Redirigir después de la inserción
     header("Location: index.php");
