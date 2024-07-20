@@ -134,7 +134,7 @@ if (isset($_POST['publicar'])) {
                         </div>
                     </div>
                     <div class="scroll">
-                        <?php require_once 'https://app-c32fa0d2-8e26-4be6-8c30-fabe657b1315.cleverapps.io/publicaciones.php'; ?>
+                        <?php require_once 'publicaciones.php'; ?>
                     </div>
                     <script>
                         $(document).ready(function() {
