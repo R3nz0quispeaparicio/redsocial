@@ -15,10 +15,10 @@ if (!isset($_SESSION['usuario'])) {
 
 // Función para obtener la conexión PDO
 function getPDOConnection() {
-    $host = 'localhost';
-    $dbname = 'redsocial';
-    $username = 'root';
-    $password = '';
+    $host = 'bo748bvup13ccw72g9tv-mysql.services.clever-cloud.com';
+    $dbname = 'bo748bvup13ccw72g9tv';
+    $username = 'ubtwztmem0uyldhg';
+    $password = 'U0uMnYtpFidShFQs7p3D';
     
     $dsn = "mysql:host=$host;dbname=$dbname;charset=utf8mb4";
 
