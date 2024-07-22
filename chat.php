@@ -18,6 +18,11 @@ try {
 function saveMessage($pdo, $from, $to, $message) {
     $stmt = $pdo->prepare("INSERT INTO chats (de, para, mensaje, fecha, leido) VALUES (?, ?, ?, NOW(), 0)");
     return $stmt->execute([$from, $to, $message]);
+    if (saveMessage($pdo, $_SESSION['id'], $usuario_id, $chatInput.value)) {
+    console.log('Mensaje guardado en la base de datos');
+    } else {
+    console.error('Error al guardar el mensaje en la base de datos');
+}
 }
 
 // Obtener el nombre del usuario con el que se está chateando
