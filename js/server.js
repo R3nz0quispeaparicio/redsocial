@@ -9,14 +9,13 @@ const io = require('socket.io')(http, {
   }
 });
 const mysql = require('mysql2/promise');
-
 const dbConfig = {
   host: 'bo748bvup13ccw72g9tv-mysql.services.clever-cloud.com',
   user: 'ubtwztmem0uyldhg',
   password: 'U0uMnYtpFidShFQs7p3D',
-  database: 'bo748bvup13ccw72g9tv'
+  database: 'bo748bvup13ccw72g9tv',
+  port: 3306  // Añadido el puerto de MySQL
 };
-
 let messageCache = new Set();
 
 io.on('connection', (socket) => {
@@ -29,6 +28,12 @@ io.on('connection', (socket) => {
   });
 
   socket.on('chat message', async (msg) => {
+    // Validación de mensajes
+    if (!msg.userId || !msg.receiverId || !msg.message || !msg.timestamp) {
+      console.error('Mensaje incompleto recibido:', msg);
+      return;
+    }
+
     console.log('Mensaje recibido en el servidor:', msg);
     const roomName = [msg.userId, msg.receiverId].sort().join('-');
     
@@ -48,7 +53,6 @@ io.on('connection', (socket) => {
       );
       console.log('Mensaje guardado en la base de datos');
       connection.end();
-
       io.to(roomName).emit('chat message', msg);
     } catch (error) {
       console.error('Error al guardar el mensaje en la base de datos:', error);
@@ -61,6 +65,11 @@ io.on('connection', (socket) => {
 
   socket.on('disconnect', () => {
     console.log('Un usuario se ha desconectado', socket.id);
+  });
+
+  // Manejo de errores de socket
+  socket.on('error', (error) => {
+    console.error('Error de socket:', error);
   });
 });
 
