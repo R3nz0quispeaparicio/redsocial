@@ -15,14 +15,27 @@ try {
     error_log("Error de conexión a la base de datos: " . $e->getMessage());
     die("Error en la conexión a la base de datos");
 }
-function saveMessage($pdo, $from, $to, $message) {
-    $stmt = $pdo->prepare("INSERT INTO chats (de, para, mensaje, fecha, leido) VALUES (?, ?, ?, NOW(), 0)");
-    return $stmt->execute([$from, $to, $message]);
-    if (saveMessage($pdo, $_SESSION['id'], $usuario_id, $chatInput.value)) {
-    console.log('Mensaje guardado en la base de datos');
-    } else {
-    console.error('Error al guardar el mensaje en la base de datos');
-}
+function saveMessage(message) {
+    $.ajax({
+        url: 'save_message.php',
+        method: 'POST',
+        data: {
+            from: <?php echo $_SESSION['id']; ?>,
+            to: <?php echo $usuario_id; ?>,
+            message: message
+        },
+        dataType: 'json',
+        success: function(response) {
+            if (response.success) {
+                console.log('Mensaje guardado en la base de datos');
+            } else {
+                console.error('Error al guardar el mensaje:', response.error);
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error('Error en la solicitud AJAX:', error);
+        }
+    });
 }
 
 // Obtener el nombre del usuario con el que se está chateando
@@ -161,6 +174,7 @@ $chats = $stmt->fetchAll(PDO::FETCH_ASSOC);
             appendMessage(message);
             
             socket.emit("chat message", message);
+            saveMessage(chatInput.value);
             chatInput.value = "";
             
             // Hacer scroll al final después de enviar un mensaje
