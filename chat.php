@@ -18,7 +18,10 @@ try {
     error_log("Error de conexión a la base de datos: " . $e->getMessage());
     die("Error en la conexión a la base de datos");
 }
-
+function saveMessage($pdo, $from, $to, $message) {
+    $stmt = $pdo->prepare("INSERT INTO chats (de, para, mensaje, fecha, leido) VALUES (?, ?, ?, NOW(), 0)");
+    return $stmt->execute([$from, $to, $message]);
+}
 // Obtener el nombre del usuario con el que se está chateando
 if (isset($_GET['usuario'])) {
     $usuario_id = filter_input(INPUT_GET, 'usuario', FILTER_SANITIZE_NUMBER_INT);
