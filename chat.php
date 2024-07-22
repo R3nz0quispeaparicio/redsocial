@@ -2,6 +2,9 @@
 session_start();
 require 'lib/config.php';
 require 'lib/socialnetwork-lib.php';
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 if (!isset($_SESSION['usuario'])) {
     header("Location: login.php");
