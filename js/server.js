@@ -3,8 +3,9 @@ const app = express();
 const http = require('http').createServer(app);
 const io = require('socket.io')(http, {
   cors: {
-    origin: "*",
-    methods: ["GET", "POST"]
+    origin: "https://app-c32fa0d2-8e26-4be6-8c30-fabe657b1315.cleverapps.io",
+    methods: ["GET", "POST"],
+    credentials: true
   }
 });
 const mysql = require('mysql2/promise');
