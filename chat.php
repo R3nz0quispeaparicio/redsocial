@@ -135,10 +135,10 @@ $chats = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <?php echo ControlSidebar(); ?>
 </div>
 
-<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="jQuery/jquery-2.2.3.min.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
-<script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<script src="plugins/fastclick/fastclick.js"></script>
+<script src="slimScroll/jquery.slimscroll.min.js"></script>
+<script src="fastclick.js"></script>
 <script src="dist/js/app.min.js"></script>
 <script>
     const socket = io("https://app-c32fa0d2-8e26-4be6-8c30-fabe657b1315.cleverapps.io", {
