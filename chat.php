@@ -19,8 +19,14 @@ try {
     die("Error en la conexión a la base de datos");
 }
 function saveMessage($pdo, $from, $to, $message) {
-    $stmt = $pdo->prepare("INSERT INTO chats (de, para, mensaje, fecha, leido) VALUES (?, ?, ?, NOW(), 0)");
-    return $stmt->execute([$from, $to, $message]);
+    try {
+        $stmt = $pdo->prepare("INSERT INTO chats (de, para, mensaje, fecha, leido) VALUES (?, ?, ?, NOW(), 0)");
+        $result = $stmt->execute([$from, $to, $message]);
+        return $result;
+    } catch (PDOException $e) {
+        error_log("Error al guardar el mensaje: " . $e->getMessage());
+        return false;
+    }
 }
 // Obtener el nombre del usuario con el que se está chateando
 if (isset($_GET['usuario'])) {
@@ -161,7 +167,6 @@ $chats = $stmt->fetchAll(PDO::FETCH_ASSOC);
             saveMessage(chatInput.value);
             chatInput.value = "";
             
-            // Hacer scroll al final después de enviar un mensaje
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
     });
@@ -180,10 +185,10 @@ function saveMessage(message) {
         url: 'save_message.php',
         method: 'POST',
         data: {
-            from: <?php echo $_SESSION['id']; ?>,
-            to: <?php echo $usuario_id; ?>,
+            from: <?php echo json_encode($_SESSION['id']); ?>,
+            to: <?php echo json_encode($usuario_id); ?>,
             message: message
-            },
+        },
         dataType: 'json',
         success: function(response) {
             if (response.success) {
@@ -208,7 +213,7 @@ function appendMessage(msg) {
     messageElement.innerHTML = `
         <div class="direct-chat-info clearfix">
             <span class="direct-chat-name pull-${msg.userId == <?php echo $_SESSION['id']; ?> ? "right" : "left"}">${escapeHtml(msg.username)}</span>
-            <span class="direct-chat-timestamp pull-${msg.userId == <?php echo $_SESSION['id']; ?> ? "left" : "right"}">${new Date().toLocaleString()}</span>
+            <span class="direct-chat-timestamp pull-${msg.userId == <?php echo $_SESSION['id']; ?> ? "left" : "right"}">${new Date(msg.timestamp).toLocaleString()}</span>
         </div>
         <img class="direct-chat-img" src="avatars/${escapeHtml(msg.avatar)}" alt="User Avatar">
         <div class="direct-chat-text">${escapeHtml(msg.message)}</div>
