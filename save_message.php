@@ -4,7 +4,7 @@ require 'lib/config.php';
 require 'lib/socialnetwork-lib.php';
 
 if (!isset($_SESSION['usuario'])) {
-    die('No autorizado');
+    die(json_encode(['success' => false, 'error' => 'No autorizado']));
 }
 
 try {
