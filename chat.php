@@ -18,28 +18,6 @@ try {
     error_log("Error de conexión a la base de datos: " . $e->getMessage());
     die("Error en la conexión a la base de datos");
 }
-function saveMessage(message) {
-    $.ajax({
-        url: 'save_message.php',
-        method: 'POST',
-        data: {
-            from: <?php echo $_SESSION['id']; ?>,
-            to: <?php echo $usuario_id; ?>,
-            message: message
-        },
-        dataType: 'json',
-        success: function(response) {
-            if (response.success) {
-                console.log('Mensaje guardado en la base de datos');
-            } else {
-                console.error('Error al guardar el mensaje:', response.error);
-            }
-        },
-        error: function(xhr, status, error) {
-            console.error('Error en la solicitud AJAX:', error);
-        }
-    });
-}
 
 // Obtener el nombre del usuario con el que se está chateando
 if (isset($_GET['usuario'])) {
@@ -194,7 +172,28 @@ $chats = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
     }
 });
-
+function saveMessage(message) {
+    $.ajax({
+        url: 'save_message.php',
+        method: 'POST',
+        data: {
+            from: <?php echo $_SESSION['id']; ?>,
+            to: <?php echo $usuario_id; ?>,
+            message: message
+            },
+        dataType: 'json',
+        success: function(response) {
+            if (response.success) {
+                console.log('Mensaje guardado en la base de datos');
+            } else {
+                console.error('Error al guardar el mensaje:', response.error);
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error('Error en la solicitud AJAX:', error);
+        }
+    });
+}
 function appendMessage(msg) {
     console.log('Añadiendo mensaje al DOM:', msg);
     const messageElement = document.createElement("div");
